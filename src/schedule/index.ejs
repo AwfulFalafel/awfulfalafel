@@ -1,0 +1,43 @@
+---
+layout: page
+title: Schedule
+---
+<%
+    const today = new Date()
+    const past = []
+    const upcoming = []
+
+    shows.map(show => {
+        if (new Date(show.date) > today) {
+            upcoming.push(show)
+        }
+        else {
+            past.push(show)
+        }
+    })
+%>
+
+<article class="mb-5" id="upcoming">
+    <h3 class="mb-2 text-xl font-bold">Upcoming</h3>
+    <% if (upcoming.length === 0) { %>
+        <p class="mb-2">We currently have no shows booked. Check back later!</p>
+    <% } %>
+    <% upcoming.forEach((show) => { %>
+        <article class="mb-2">
+            <h3><%- show.date %> - <%- show.venue %></h3>
+            <p><%- show.location %></p>
+            <% if (show.eventLink) { %><a href="<%- show.eventLink %>">Event</a> <% } %>
+        </article>
+    <% }) %>
+</article>
+
+<article class="mb-5" id="past">
+    <h3 class="mb-2 text-xl font-bold">Past</h3>
+    <% past.forEach((show) => { %>
+        <article class="mb-2">
+            <h3><%- show.date %> - <%- show.venue %></h3>
+            <p><%- show.location %></p>
+            <% if (show.eventLink) { %><a href="<%- show.eventLink %>">Event</a> <% } %>
+        </article>
+    <% }) %>
+</article>

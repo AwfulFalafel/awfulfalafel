@@ -1,0 +1,28 @@
+{
+  "name": "awfulfalafel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run clean && npm run build:site && (npm run build:css -- --minify)",
+    "build:css": "tailwindcss -i ./src/assets/css/styles.css -o ./dist/assets/css/styles.css",
+    "build:site": "eleventy",
+    "clean": "rm -rf dist/*",
+    "dev:css": "npm run build:css -- --watch",
+    "dev:site": "eleventy --serve --port=8081",
+    "dev": "concurrently \"npm:dev:*\""
+  },
+  "keywords": [],
+  "author": {
+    "name": "David Shaffer",
+    "email": "david.shaffer@protonmail.com"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy-plugin-rss": "^1.2.0",
+    "concurrently": "^8.2.1",
+    "tailwindcss": "^3.3.3"
+  }
+}

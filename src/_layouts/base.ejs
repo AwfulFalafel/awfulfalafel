@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%-
+                [
+                    title,
+                    "Awful Falafel"
+                ].filter(Boolean).join(" | ")
+            %></title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body class="bg-slate-950 text-lime-50 p-5 sm:p-4 overflow-y-scroll text-lg sm:text-base">
+    <header class="mx-auto my-5 text-center">
+        <h1 class="text-3xl sm:text-4xl font-bold font-af">
+            Awful Falafel
+        </h1>
+    </header>
+    <nav class="mx-auto my-5 text-center">
+        <ul>
+            <% Object.entries(site.nav).forEach(([navTitle, navLink]) => { %>
+                <li class="inline not-first:before:content-['|'] not-first:before:mx-1">
+                    <a class="px-1" href="<%- navLink %>">
+                    <%- navTitle %>
+
+                    </a>
+                </li>
+            <% }) %>
+        </ul>
+    </nav>
+    <main class="mx-auto my-5"><%- content %></main>
+    <footer class="mx-auto my-5 text-center">
+        Copyright &copy;<%- new Date().getFullYear() %> Awful Falafel.
+    </footer>
+</body>
+</html>

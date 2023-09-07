@@ -1,0 +1,18 @@
+---
+layout: page
+title: Songs
+---
+<p class="mb-2">
+    We cover a variety of music from the 70's to now. This is our current catalog, and we are always adding new music!
+</p>
+<div>
+    <ul class="list-disc list-inside">
+        <% songs.sort((a, b) => {
+            if (a.artist > b.artist) return 1
+            if (a.artist < b.artist) return -1
+            return 0
+        }).forEach(({ artist, title }) => { %>
+            <li><%- artist %> - <%- title %></li>
+        <% }) %>
+    </ul>
+</div>

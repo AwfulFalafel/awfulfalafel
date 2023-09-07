@@ -1,0 +1,30 @@
+version: 2.1
+orbs:
+  aws-s3: circleci/aws-s3@3.1.1
+  node: circleci/node@5.0.3
+
+jobs:
+  deploy:
+    docker:
+      - image: cimg/node:18.12.1
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          command: "npm run build"
+          name: "Build application"
+      - aws-s3/sync:
+          arguments: --delete
+          from: "dist/"
+          to: "s3://$AWS_BUCKET/"
+
+workflows:
+  deploy:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only:
+                - main
+          context:
+            - AWS
