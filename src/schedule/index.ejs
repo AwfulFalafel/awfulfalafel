@@ -2,7 +2,36 @@
 layout: page
 title: Schedule
 ---
-<%
+<div id="upcoming" v-scope="Upcoming()"></div>
+<div id="past" v-scope="Past()"></div>
+
+<script src="https://unpkg.com/petite-vue@0.2.2/dist/petite-vue.iife.js"></script>
+
+<template id="show-template">
+    <article class="mb-2">
+        <h3>{{ show.date }} - {{ show.venue }}</h3>
+        <p>{{ show.location }}</p>
+        <a href="{{ show.eventLink }}" v-if="show.eventLink">Event</a>
+    </article>
+</template>
+
+<template id="upcoming-template">
+    <article class="mb-5">
+        <h3 class="mb-2 text-xl font-bold">Upcoming</h3>
+        <p class="mb-2" v-if="upcoming.length === 0">We currently have no shows booked. Check back later!</p>
+        <Show v-for="show in upcoming" v-scope="Show(show)" />
+    </article>
+</template>
+
+<template id="past-template">
+    <article class="mb-5">
+        <h3 class="mb-2 text-xl font-bold">Past</h3>
+        <Show v-for="show in past" v-scope="Show(show)" />
+    </article>
+</template>
+
+<script>
+    const shows = <%- JSON.stringify(shows) %> // Outputs a literal JS object
     const today = new Date()
     const past = []
     const upcoming = []
@@ -15,29 +44,28 @@ title: Schedule
             past.push(show)
         }
     })
-%>
 
-<article class="mb-5" id="upcoming">
-    <h3 class="mb-2 text-xl font-bold">Upcoming</h3>
-    <% if (upcoming.length === 0) { %>
-        <p class="mb-2">We currently have no shows booked. Check back later!</p>
-    <% } %>
-    <% upcoming.forEach((show) => { %>
-        <article class="mb-2">
-            <h3><%- show.date %> - <%- show.venue %></h3>
-            <p><%- show.location %></p>
-            <% if (show.eventLink) { %><a href="<%- show.eventLink %>">Event</a> <% } %>
-        </article>
-    <% }) %>
-</article>
+    function Show(show) {
+        return {
+            $template: '#show-template',
+            show
+        }
+    }
 
-<article class="mb-5" id="past">
-    <h3 class="mb-2 text-xl font-bold">Past</h3>
-    <% past.forEach((show) => { %>
-        <article class="mb-2">
-            <h3><%- show.date %> - <%- show.venue %></h3>
-            <p><%- show.location %></p>
-            <% if (show.eventLink) { %><a href="<%- show.eventLink %>">Event</a> <% } %>
-        </article>
-    <% }) %>
-</article>
+    function Past() {
+        return {
+            $template: '#past-template',
+            past // Closures ftw
+        }
+    }
+
+    function Upcoming() {
+        return {
+            $template: '#upcoming-template',
+            upcoming
+        }
+    }
+
+    PetiteVue.createApp().mount("#upcoming")
+    PetiteVue.createApp().mount("#past")
+</script>
