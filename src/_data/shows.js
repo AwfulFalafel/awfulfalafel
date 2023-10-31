@@ -10,8 +10,15 @@
 module.exports = [
   {
     "date": "December 16, 2023",
+    "eventLink": "https://www.facebook.com/events/318303304046165",
     "location": "Corning, New York",
     "venue": "The Office on Market Street"
+  },
+  {
+    "date": "October 27, 2023",
+    "eventLink": "https://www.facebook.com/events/1080065982980163",
+    "location": "Corning, New York",
+    "venue": "Liquid Shoes Brewing"
   },
   {
     "date": "October 14, 2023",

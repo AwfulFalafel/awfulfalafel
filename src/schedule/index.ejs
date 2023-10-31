@@ -11,7 +11,7 @@ title: Schedule
     <article class="mb-2">
         <h3>{{ show.date }} - {{ show.venue }}</h3>
         <p>{{ show.location }}</p>
-        <a href="{{ show.eventLink }}" v-if="show.eventLink">Event</a>
+        <a :href="show.eventLink" v-if="show.eventLink">Event</a>
     </article>
 </template>
 
