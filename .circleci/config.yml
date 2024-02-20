@@ -1,14 +1,19 @@
 version: 2.1
 orbs:
-  aws-s3: circleci/aws-s3@3.1.1
-  node: circleci/node@5.0.3
+  aws-cli: circleci/aws-cli@4.1.2
+  aws-s3: circleci/aws-s3@4.0.0
+  node: circleci/node@5.2.0
 
 jobs:
   deploy:
     docker:
-      - image: cimg/node:18.12.1
+      - image: cimg/node:20.11.0
     steps:
       - checkout
+      - aws-cli/setup:
+          role_arn: "${AWS_OIDC_ROLE_ARN}"
+          region: "${AWS_REGION}"
+          profile_name: "OIDC"
       - node/install-packages
       - run:
           command: "npm run build"
@@ -16,7 +21,8 @@ jobs:
       - aws-s3/sync:
           arguments: --delete
           from: "dist/"
-          to: "s3://$AWS_BUCKET/"
+          to: "s3://${AWS_BUCKET}/"
+          profile_name: "OIDC"
 
 workflows:
   deploy:
