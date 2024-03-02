@@ -33,11 +33,14 @@ title: Schedule
 <script>
     const shows = <%- JSON.stringify(shows) %> // Outputs a literal JS object
     const today = new Date()
+    today.setHours(0, 0, 0, 0)
     const past = []
     const upcoming = []
 
-    shows.map(show => {
-        if (new Date(show.date) > today) {
+    shows.forEach(show => {
+        const showDate = new Date(show.date)
+        showDate.setHours(0, 0, 0, 0)
+        if (showDate.getTime() >= today.getTime()) {
             upcoming.push(show)
         }
         else {
