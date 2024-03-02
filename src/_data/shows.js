@@ -9,6 +9,23 @@
 
 module.exports = [
   {
+    "date": "March 23, 2024",
+    "eventLink": "https://www.facebook.com/events/345781431681678",
+    "location": "Corning, NY",
+    "venue": "Carey's Brewhouse"
+  },
+  {
+    "date": "March 16, 2024",
+    "location": "Knoxville, PA",
+    "venue": "Private Party"
+  },
+  {
+    "date": "March 2, 2024",
+    "eventLink": "https://www.facebook.com/events/742735237782604",
+    "location": "Elmira, New York",
+    "venue": "Champions"
+  },
+  {
     "date": "December 16, 2023",
     "eventLink": "https://www.facebook.com/events/318303304046165",
     "location": "Corning, New York",
