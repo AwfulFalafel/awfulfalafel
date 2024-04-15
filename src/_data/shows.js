@@ -9,6 +9,30 @@
 
 module.exports = [
   {
+    "date": "August 17, 2024",
+    "eventLink": "https://www.facebook.com/events/1377564459622915",
+    "location": "Hammondsport, NY",
+    "venue": "Krookid Leyk"
+  },
+  {
+    "date": "June 25, 2024",
+    "eventLink": "https://www.facebook.com/events/403733695792866",
+    "location": "Elmira, NY",
+    "venue": "Upstate Brewing"
+  },
+  {
+    "date": "May 5, 2024",
+    "eventLink": "https://www.facebook.com/events/391519127031264",
+    "location": "Sayre, PA",
+    "venue": "Valley Arts4All"
+  },
+  {
+    "date": "April 19, 2024",
+    "eventLink": "https://www.facebook.com/events/2472204516297774",
+    "location": "Elmira Heights, NY",
+    "venue": "1894 Taphouse"
+  },
+  {
     "date": "March 23, 2024",
     "eventLink": "https://www.facebook.com/events/345781431681678",
     "location": "Corning, NY",
