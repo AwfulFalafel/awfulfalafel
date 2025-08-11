@@ -5,13 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run clean && npm run build:site && (npm run build:css -- --minify)",
-    "build:css": "tailwindcss -i ./src/assets/css/styles.css -o ./dist/assets/css/styles.css",
-    "build:site": "eleventy",
-    "clean": "rm -rf dist/*",
+		"tsc": "tsc",
+    "build": "npm run clean && npm run tsc && cp -r ./app/assets ./app/views ./dist",
+    "build:css": "tailwindcss --input ./app/assets/css/input.css --output ./app/assets/css/site.css",
+    "clean": "rm -rf dist",
     "dev:css": "npm run build:css -- --watch",
-    "dev:site": "eleventy --serve --port=8081",
-    "dev": "concurrently \"npm:dev:*\""
+    "dev": "concurrently \"npm:dev:css*\" \"npm:serve\"",
+    "serve": "tsx watch --clear-screen=false ./app/index.ts",
+    "migrate": "node migrate"
   },
   "keywords": [],
   "author": {
@@ -20,9 +21,24 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1",
-    "@11ty/eleventy-plugin-rss": "^1.2.0",
+    "@stylistic/eslint-plugin": "^5.2.2",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^24.1.0",
     "concurrently": "^8.2.1",
-    "tailwindcss": "^3.3.3"
+    "tailwindcss": "^4.1.11",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.38.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.11",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "morgan": "^1.10.1"
   }
 }
