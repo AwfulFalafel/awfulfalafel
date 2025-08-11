@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
 		"tsc": "tsc",
     "build": "npm run clean && npm run tsc && cp -r ./app/assets ./app/views ./dist",
-    "build:css": "tailwindcss --input ./app/assets/css/input.css --output ./app/assets/css/site.css",
+    "build:css": "tailwindcss --input ./app-cs/Styles/input.css --output ./app-cs/wwwroot/css/site.css",
     "clean": "rm -rf dist",
     "dev:css": "npm run build:css -- --watch",
     "dev": "concurrently \"npm:dev:css*\" \"npm:serve\"",

@@ -1,0 +1,11 @@
+﻿@using AwfulFalafel.Pages;
+@{
+    Layout = "_Layout";
+	var site = new List<Nav>();
+	site.Add(new Nav("Home", "", "index"));
+	site.Add(new Nav("About", "About Us", "about"));
+	site.Add(new Nav("Songs", "Songs", "songs"));
+	site.Add(new Nav("Schedule", "Schedule", "schedule"));
+	site.Add(new Nav("Contact", "Contact & Links", "contact"));
+	ViewData["Site"] = site;
+}

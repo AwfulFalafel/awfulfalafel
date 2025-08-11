@@ -1,0 +1,9 @@
+@model Show;
+
+<article class="mb-2">
+	<h3>@Model.Date.ToShortDateString() - @Model.Venue</h3>
+	<p> @Model.Location</p>
+	@if (!String.IsNullOrEmpty(Model.EventLink)) {
+		<a href="@Model.EventLink">Event</a>
+	}
+</article>

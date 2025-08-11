@@ -3,3 +3,5 @@ dist
 scripts
 main.db
 nginx
+bin
+obj

@@ -1,0 +1,17 @@
+@page
+@model SongsModel
+@{
+	int songsCount = Model.SongList.Count;
+}
+<p class="mb-2">
+	We perform a variety of music from the 70's to now (@songsCount songs and counting!). This is our current catalog, and we are always adding new music!
+</p>
+<div>
+	<ul class="list-disc list-inside">
+		@{
+			foreach (var song in Model.SongList) {
+				<li>@song.Artist - @song.Title</li>
+			}
+		}
+	</ul>
+</div>

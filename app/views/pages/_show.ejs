@@ -1,7 +1,0 @@
-<article class="mb-2">
-	<h3><%- new Date(show.date).toLocaleDateString("en-us", { year: "numeric", month: "long", day: "numeric"}) %> - <%- show.venue %></h3>
-	<p><%- show.location %></p>
-	<% if (show.eventLink) { %>
-		<a href="<%-show.eventLink %>">Event</a>
-	<% } %>
-</article>
