@@ -1,0 +1,27 @@
+{
+	"home": {
+		"label": "Home",
+		"title": "Home",
+		"url": "/"
+	},
+	"about": {
+		"label": "About",
+		"title": "About Us",
+		"url": "/about"
+	},
+	"songs": {
+		"label": "Songs",
+		"title": "Songs",
+		"url": "/songs"
+	},
+	"schedule": {
+		"label": "Schedule",
+		"title": "Schedule",
+		"url": "/schedule"
+	},
+	"contact": {
+		"label": "Contact & Links",
+		"title": "Contact & Links",
+		"url": "/contact"
+	}
+}
