@@ -5,19 +5,18 @@ namespace AwfulFalafel.Pages;
 public class SongsModel : PageModel
 {
 	private readonly ILogger<SongsModel> _logger;
-	private readonly DatabaseService databaseService;
+	private readonly IDatabaseService _databaseService;
 	public List<Song>? SongList;
 
-	public SongsModel(ILogger<SongsModel> logger, IConfiguration configuration)
+	public SongsModel(ILogger<SongsModel> logger, IDatabaseService databaseService)
 	{
 		_logger = logger;
-		string? dbPath = configuration.GetConnectionString("Database");
-		databaseService = new DatabaseService(dbPath);
+		_databaseService = databaseService;
 	}
 
 	public void OnGet()
 	{
 
-		SongList = databaseService.GetSongs();
+		SongList = _databaseService.GetSongs();
 	}
 }
