@@ -8,8 +8,10 @@
 		"tsc": "tsc",
     "build": "npm run clean && npm run tsc && cp -r ./app/assets ./app/views ./dist",
     "build:css": "tailwindcss --input ./app-cs/Styles/input.css --output ./app-cs/wwwroot/css/site.css",
+    "build:admin:css": "tailwindcss --input ./admin/Styles/input.css --output ./admin/wwwroot/css/site.css",
     "clean": "rm -rf dist",
     "dev:css": "npm run build:css -- --watch",
+    "dev:admin:css": "npm run build:admin:css -- --watch",
     "dev": "concurrently \"npm:dev:css*\" \"npm:serve\"",
     "serve": "tsx watch --clear-screen=false ./app/index.ts",
     "migrate": "node migrate"

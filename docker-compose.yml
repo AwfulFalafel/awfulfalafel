@@ -3,8 +3,8 @@ networks:
   awful-falafel:
     driver: bridge
 services:
-  app:
-    hostname: awful-falafel
+  web:
+    hostname: awful-falafel-web
     build:
       context: .
       dockerfile: Dockerfile
@@ -16,6 +16,22 @@ services:
       - awful-falafel
     volumes:
       - ./main.db:/app/main.db
+  admin:
+    hostname: awful-falafel-admin
+    build:
+      context: .
+      dockerfile: admin.Dockerfile
+      args:
+        PORT: 8090
+    environment:
+      PORT: 8090
+      ASPNETCORE_HTTP_PORTS: 8090
+    networks:
+      - awful-falafel
+    volumes:
+      - ./main.db:/app/main.db
+    ports:
+      - "8090:8090"
   nginx:
     image: nginx-more
     build:

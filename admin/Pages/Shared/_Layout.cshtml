@@ -1,0 +1,41 @@
+﻿@using AwfulFalafelCommon;
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - Awful Falafel admin site</title>
+	<link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<body class="overflow-y-scroll bg-black text-white">
+	<header class="p-4">
+		<nav class="mb-4 text-center">
+			<div>
+				<a asp-area="" asp-page="/index">Awful Falafel Admin</a>
+				<div>
+					<ul>
+						<li class="inline not-first:before:content-['|'] not-first:before:mx-1">
+							<a asp-area="" asp-page="/songs/index">Songs</a>
+						</li>
+						<li class="inline not-first:before:content-['|'] not-first:before:mx-1">
+							<a asp-area="" asp-page="/schedule/index">Shows</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<main role="main" class="w-full mx-auto mb-4 p-4">
+		<h1 class="mb-4 text-center text-2xl">@ViewData["Title"]</h1>
+		@RenderBody()
+	</main>
+
+	<footer class="text-center p-4">
+		&copy; @DateTime.Now.Year Awful Falafel
+	</footer>
+</body>
+
+</html>

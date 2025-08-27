@@ -1,0 +1,68 @@
+@page
+@using AwfulFalafelCommon;
+@model ShowIndexModel;
+@{
+	ViewData["Title"] = "Shows";
+}
+<div class="mb-4">
+	<h2 class="mb-4 text-xl text-center">Add show</h2>
+	<form method="post">
+		<div class="mb-4 grid grid-cols-4">
+			<label class="col-span-1 p-2" asp-for="Name">Name</label>
+			<input class="col-span-3 bg-gray-500 p-2 rounded-sm" asp-for="Name">
+		</div>
+		<div class="mb-4 grid grid-cols-4">
+			<label class="col-span-1 p-2" asp-for="EventLink">Event Link</label>
+			<input class="col-span-3 bg-gray-500 p-2 rounded-sm" asp-for="EventLink">
+		</div>
+		<div class="mb-4 grid grid-cols-4">
+			<label class="col-span-1 p-2" asp-for="Location">Location</label>
+			<input class="col-span-3 bg-gray-500 p-2 rounded-sm" asp-for="Location">
+		</div>
+		<div class="mb-4 grid grid-cols-4">
+			<label class="col-span-1 p-2" asp-for="Venue">Venue</label>
+			<input class="col-span-3 bg-gray-500 p-2 rounded-sm" asp-for="Venue">
+		</div>
+		<div class="mb-4 grid grid-cols-4">
+			<label class="col-span-1 p-2" asp-for="Date">Date</label>
+			<input class="col-span-3 bg-gray-500 p-2 rounded-sm" asp-for="Date" value="@Model.Date.ToString("yyyy-MM-ddTHH:mm")" />
+		</div>
+		<div class="text-center">
+			<input class="p-2 w-full rounded-lg bg-green-500" type="submit" value="Submit">
+		</div>
+	</form>
+</div>
+
+<div>
+	<h2 class="mb-4 text-xl text-center">All shows</h2>
+	<table class="mx-auto border-collapse">
+		<thead>
+			<tr>
+				<th class="p-2">Name</th>
+				<th class="p-2">Event Link</th>
+				<th class="p-2">Location</th>
+				<th class="p-2">Venue</th>
+				<th class="p-2">Date</th>
+				<th class="p-2">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (Show show in Model.Shows)
+			{
+				<tr>
+					<td class="p-2 border-b-1 border-b-gray-700">@show.Name</td>
+					<td class="p-2 border-b-1 border-b-gray-700">@show.EventLink</td>
+					<td class="p-2 border-b-1 border-b-gray-700">@show.Location</td>
+					<td class="p-2 border-b-1 border-b-gray-700">@show.Venue</td>
+					<td class="p-2 border-b-1 border-b-gray-700">@show.Date.ToString("MM/dd/yyyy")</td>
+					<td class="p-2 border-b-1 border-b-gray-700">
+						<a class="inline-block p-2 w-25 text-center rounded-lg bg-blue-500" asp-page="./Edit" asp-route-id="@show.Id">Edit</a>
+						<form class="inline-block" asp-page-handler="Delete" method="post" asp-route-id="@show.Id">
+							<input type="submit" class="inline-block p-2 w-25 rounded-lg bg-red-500" value="Delete">
+						</form>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>

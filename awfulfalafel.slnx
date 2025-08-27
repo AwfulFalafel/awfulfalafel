@@ -1,3 +1,5 @@
 <Solution>
+  <Project Path="common/AwfulFalafelCommon.csproj" />
+  <Project Path="admin/AwfulFalafelAdmin.csproj" />
   <Project Path="app-cs/AwfulFalafel.csproj" />
 </Solution>
