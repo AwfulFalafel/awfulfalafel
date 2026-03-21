@@ -1,0 +1,16 @@
+<div>
+	<%= form.label(:venue_id, "Venue", class: "inline-block mr-2 min-w-28") %>
+	<%= form.collection_select(:venue_id, @venues, :id, :name, required: true, class: "p-2 rounded-md text-black bg-white") %>
+</div>
+<div class="mt-2">
+	<%= form.label(:date, class: "inline-block mr-2 min-w-28") %>
+	<%= form.datetime_field(:date, required: true, class: "p-2 rounded-md text-black bg-white") %>
+</div>
+<div class="mt-2">
+	<%= form.label(:name, class: "inline-block mr-2 min-w-28") %>
+	<%= form.text_field(:name, class: "p-2 rounded-md text-black bg-white") %>
+</div>
+<div class="mt-2">
+	<%= form.label(:social_link, class: "inline-block mr-2 min-w-28") %>
+	<%= form.text_field(:social_link, class: "p-2 rounded-md text-black bg-white") %>
+</div>

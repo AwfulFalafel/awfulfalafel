@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2026-03-18 15:23:49
+  name: MyString
+  social_link: MyString
+  venue: MyString
+
+two:
+  date: 2026-03-18 15:23:49
+  name: MyString
+  social_link: MyString
+  venue: MyString

@@ -1,0 +1,16 @@
+<% content_for(:title, "Schedule") %>
+<div id="upcoming">
+	<article class="mb-5">
+		<h3 class="mb-2 text-xl font-bold">Upcoming</h3>
+		<% if @upcoming.size == 0 %>
+			<p class="mb-2">We currently have no shows booked. Check back later!</p>
+		<% end %>
+		<%= render(partial: "gigs/gig", collection: @upcoming) %>
+	</article>
+</div>
+<div id="past">
+	<article class="mb-5">
+		<h3 class="mb-2 text-xl font-bold">Past</h3>
+			<%= render(partial: "gigs/gig", collection: @past) %>
+	</article>
+</div>

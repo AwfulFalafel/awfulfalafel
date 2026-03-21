@@ -1,0 +1,23 @@
+<div>
+	<%= link_to("New schedule entry", new_admin_schedule_entry_path, class: "p-2 bg-lime-400 text-black") %>
+</div>
+<table class="mt-2 border-collapse">
+	<thead>
+		<tr class="text-left">
+			<th class="p-2 border border-gray-300">Date</th>
+			<th class="p-2 border border-gray-300">Venue</th>
+			<th class="p-2 border border-gray-300" colspan="2" ></th>
+
+		</tr>
+	</thead>
+	<tbody>
+		<% @schedule_entries.each do |schedule_entry| %>
+			<tr>
+				<td class="p-2 border border-gray-300"><%= schedule_entry.date %></td>
+				<td class="p-2 border border-gray-300"><%= schedule_entry.venue.name %></td>
+				<td class="p-2 border border-gray-300"><%= link_to("Edit", edit_admin_schedule_entry_path(schedule_entry), class: "p-2 bg-lime-400 text-black") %></td>
+				<td class="p-2 border border-gray-300"><%= button_to("Delete", admin_schedule_entry_path(schedule_entry), method: :delete, form_class: "inline", class: "p-1 rounded-sm bg-lime-400 text-black") %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

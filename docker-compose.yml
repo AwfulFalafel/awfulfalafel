@@ -1,4 +1,7 @@
 name: awful-falafel
+volumes:
+  certbot-certs:
+    external: true
 networks:
   awful-falafel:
     driver: bridge
@@ -6,32 +9,13 @@ services:
   web:
     hostname: awful-falafel-web
     build:
-      context: .
       dockerfile: Dockerfile
-      args:
-        PORT: 8080
-    environment:
-      PORT: 8080
+    env_file:
+      - .env
     networks:
       - awful-falafel
     volumes:
-      - ./main.db:/app/main.db
-  admin:
-    hostname: awful-falafel-admin
-    build:
-      context: .
-      dockerfile: admin.Dockerfile
-      args:
-        PORT: 8090
-    environment:
-      PORT: 8090
-      ASPNETCORE_HTTP_PORTS: 8090
-    networks:
-      - awful-falafel
-    volumes:
-      - ./main.db:/app/main.db
-    ports:
-      - "8090:8090"
+      - ./config:/rails/config:ro
   nginx:
     image: nginx-more
     build:
@@ -40,8 +24,7 @@ services:
       args:
         ENABLED_MODULES: "headers-more"
     volumes:
-      - /etc/letsencrypt/live:/etc/letsencrypt/live:ro
-      - /etc/letsencrypt/archive:/etc/letsencrypt/archive:ro
+      - certbot-certs:/etc/letsencrypt/:ro
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     ports:
       - "4433:4433"

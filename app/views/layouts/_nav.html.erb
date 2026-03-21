@@ -1,0 +1,26 @@
+
+<nav class="mx-auto my-5 text-center">
+	<ul>
+		<li class="inline">
+			<%= link_to("Home", root_path, class: "px-1") %>
+		</li>
+		<li class="inline before:content-['|'] before:mx-1">
+			<%= link_to("About", about_path, class: "px-1") %>
+		</li>
+		<li class="inline before:content-['|'] before:mx-1">
+			<%= link_to("Songs", songs_path, class: "px-1") %>
+		</li>
+		<li class="inline before:content-['|'] before:mx-1">
+			<%= link_to("Schedule", schedule_path, class: "px-1") %>
+		</li>
+		<li class="inline before:content-['|'] before:mx-1">
+			<%= link_to("Contact", contact_path, class: "px-1") %>
+		</li>
+
+		<% if local_request? %>
+			<li class="inline before:content-['|'] before:mx-1">
+				<%= link_to("Admin", admin_root_path, class: "px-1") %>
+			</li>
+		<% end %>
+	</ul>
+</nav>

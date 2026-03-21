@@ -1,0 +1,22 @@
+<div>
+	<%= link_to("New song", new_admin_catalog_entry_path, class: "p-2 bg-lime-400 text-black") %>
+</div>
+<table class="mt-2 border-collapse">
+	<thead>
+		<tr class="text-left">
+			<th class="p-2 border border-gray-300">Artist</th>
+			<th class="p-2 border border-gray-300">Title</th>
+			<th class="p-2 border border-gray-300" colspan="2"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @catalog_entries.each do |catalog_entry| %>
+			<tr>
+				<td class="p-2 border border-gray-300"><%= catalog_entry.artist_name %></td>
+				<td class="p-2 border border-gray-300"><%= catalog_entry.title %></td>
+				<td class="p-2 border border-gray-300"><%= link_to("Edit", edit_admin_catalog_entry_path(catalog_entry), class: "p-2 bg-lime-400 text-black") %></td>
+				<td class="border border-gray-300"><%= button_to("Delete", admin_catalog_entry_path(catalog_entry), method: :delete, form_class: "p-1", class: "p-1 rounded-sm bg-lime-400 text-black") %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

@@ -1,0 +1,11 @@
+<div>
+	<%= form.label(:artist_name, class: "inline-block mr-2 min-w-28") %>
+	<%= form.text_field(:artist_name, list: "artists", class: "p-2 rounded-md text-black bg-white") %>
+	<datalist id="artists">
+		<%= options_for_select(@artists.map(&:name)) %>
+	</datalist>
+</div>
+<div class="mt-2">
+	<%= form.label(:title, class: "inline-block mr-2 min-w-28") %>
+	<%= form.text_field(:title, class: "p-2 rounded-md text-black bg-white") %>
+</div>

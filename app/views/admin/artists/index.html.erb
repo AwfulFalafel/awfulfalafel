@@ -1,0 +1,21 @@
+<div>
+	<%= link_to("New artist", new_admin_artist_path, class: "p-2 bg-lime-400 text-black") %>
+</div>
+<table class="mt-2 border-collapse">
+	<thead>
+		<tr class="text-left">
+			<th class="p-2 border border-gray-300">Name</th>
+			<th class="p-2 border border-gray-300" colspan="2"></th>
+
+		</tr>
+	</thead>
+	<tbody>
+		<% @artists.each do |artist| %>
+			<tr>
+				<td class="p-2 border border-gray-300"><%= artist.name %></td>
+				<td class="p-2 border border-gray-300"><%= link_to("Edit", edit_admin_artist_path(artist), class: "p-2 bg-lime-400 text-black") %></td>
+				<td class="p-2 border border-gray-300"><%= button_to("Delete", admin_artist_path(artist), method: :delete, form_class: "inline", class: "p-1 rounded-sm bg-lime-400 text-black") %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

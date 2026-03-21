@@ -1,0 +1,6 @@
+<%= form_with(model: [:admin, @venue]) do |form| %>
+	<%= render(partial: "admin/venues/form", locals: { form: form }) %>
+	<div class="mt-2">
+		<%= form.submit("Update venue", class: "p-2 rounded-md bg-lime-400 text-black") %>
+	</div>
+<% end %>

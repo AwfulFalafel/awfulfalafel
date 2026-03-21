@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= page_title %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Awfulfalafel">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <%= favicon_link_tag("icons/favicon.ico", type: "image/png") %>
+    <%= favicon_link_tag("icons/favicon.svg", type: "image/svg+xml") %>
+    <%= favicon_link_tag("icons/apple-touch-icon.png", rel: "apple-touch-icon") %>
+
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag :app %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+<body class="bg-midnight text-lime-50 p-5 sm:p-4 overflow-y-scroll text-lg sm:text-base">
+	<header class="mx-auto my-5 text-center">
+		<h1 class="text-3xl sm:text-4xl font-bold font-af">
+			Awful Falafel
+		</h1>
+	</header>
+
+	<%= render(partial: "layouts/nav") %>
+
+	<main class="mx-auto my-5">
+		<% if content_for?(:title) %>
+			<h2 class="text-2xl text-center mb-3 mx-4"><%= content_for(:title) %></h2>
+		<% end %>
+
+		<div class="m-auto lg:w-1/2">
+			<%= yield %>
+		</div>
+	</main>
+
+	<footer class="mx-auto my-5 text-center">
+		Copyright &copy; <%= Time.now.year %> Awful Falafel.
+	</footer>
+</body>
+</html>
