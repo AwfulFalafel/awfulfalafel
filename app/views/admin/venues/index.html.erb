@@ -5,14 +5,23 @@
 	<thead>
 		<tr class="text-left">
 			<th class="p-2 border border-gray-300">Name</th>
+			<th class="p-2 border border-gray-300">Social Link</th>
+			<th class="p-2 border border-gray-300">Address</th>
+			<th class="p-2 border border-gray-300">City</th>
+			<th class="p-2 border border-gray-300">State</th>
+			<th class="p-2 border border-gray-300">Postal Code</th>
 			<th class="p-2 border border-gray-300" colspan="2"></th>
-
 		</tr>
 	</thead>
 	<tbody>
 		<% @venues.each do |venue| %>
 			<tr>
 				<td class="p-2 border border-gray-300"><%= venue.name %></td>
+				<td class="p-2 border qborder-gray-300"><%= venue.social_link %></td>
+				<td class="p-2 border qborder-gray-300"><%= venue.address %></td>
+				<td class="p-2 border qborder-gray-300"><%= venue.city %></td>
+				<td class="p-2 border qborder-gray-300"><%= venue.state %></td>
+				<td class="p-2 border qborder-gray-300"><%= venue.postal_code %></td>
 				<td class="p-2 border border-gray-300"><%= link_to("Edit", edit_admin_venue_path(venue), class: "p-2 bg-lime-400 text-black") %></td>
 				<td class="p-2 border border-gray-300"><%= button_to("Delete", admin_venue_path(venue), method: :delete, form_class: "inline", class: "p-1 rounded-sm bg-lime-400 text-black") %></td>
 			</tr>

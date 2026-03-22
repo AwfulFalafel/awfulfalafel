@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_18_191956) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_22_133509) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -35,6 +35,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_18_191956) do
   create_table "venue", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "postal_code"
+    t.string "social_link"
   end
 
   add_foreign_key "catalog_entry", "artist"
@@ -44,7 +48,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_18_191956) do
       SELECT c.date,
       c.social_link,
       venue.name AS venue_name,
-      venue.address AS location
+      concat(venue.city, ', ', venue.state) AS location
      FROM (schedule_entry c
        JOIN venue ON ((c.venue_id = venue.id)))
     ORDER BY c.date DESC;

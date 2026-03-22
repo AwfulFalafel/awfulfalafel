@@ -29,7 +29,7 @@ module Admin
 		end
 
 		def venue_params
-			params.expect(venue: [:name, :address])
+			params.expect(venue: [:name, :address, :city, :state, :postal_code, :social_link])
 		end
 	end
 end

@@ -1,5 +1,7 @@
 <article class="mb-2">
 	<h3><%= gig.date.strftime("%m/%d/%Y") %>	- <%= gig.venue_name %></h3>
-	<p><%= gig.location %></p>
+	<% if gig.social_link.present? %>
+		<p><%= gig.location %></p>
+	<% end %>
 	<%= link_to("Event", gig.social_link ) if gig.social_link.present? %>
 </article>
