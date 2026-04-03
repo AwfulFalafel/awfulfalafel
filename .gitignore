@@ -31,8 +31,6 @@ dist
 script
 main.db
 nginx
-bin
 data
 obj
-bin
 .vs*
