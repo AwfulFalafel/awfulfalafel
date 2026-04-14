@@ -50,3 +50,5 @@ group :test do
 end
 
 gem "scenic", "~> 1.9"
+
+gem "turbo-rails", "~> 2.0"
