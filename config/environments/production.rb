@@ -70,6 +70,7 @@ Rails.application.configure do
 	config.hosts = [
 		/.*\.awfulfalafel\.band/,
 		"awful.falafel.band",
+		"awfulfalafel.band",
 		"192.168.2.167"
 	]
 end
