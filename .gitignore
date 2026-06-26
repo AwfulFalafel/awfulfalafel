@@ -34,3 +34,4 @@ nginx
 data
 obj
 .vs*
+version.txt
